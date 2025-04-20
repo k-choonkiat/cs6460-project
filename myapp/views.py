@@ -1,12 +1,15 @@
 from flask import Flask, render_template, request, redirect, jsonify
 import sqlite3
 from datetime import datetime
-from app.database import Database
+from myapp.database import Database
 from . import app
 import os
 
 def get_db_connection():
-    conn = sqlite3.connect('database/reading_app.db')
+    base_dir = os.path.abspath(os.path.dirname(__file__))
+    db_path = os.path.join(base_dir, 'database', 'reading_app.db')
+    print(db_path)
+    conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     return conn
 
