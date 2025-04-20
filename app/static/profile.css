@@ -1,0 +1,114 @@
+.block{
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    height: 750px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+  }
+.card {
+    width: 1250px;
+    height: fit-content;
+    align-items: center;
+    background-color: #efefef;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.image img {
+    transition: all 0.5s
+}
+
+.card:hover .image img {
+    transform: scale(1.5)
+}
+
+.btn {
+    height: 140px;
+    width: 140px;
+    display: table;
+    margin: 0 auto;
+    border-radius: 50%
+}
+
+.name {
+    font-size: 22px;
+    font-weight: bold;
+    display: table;
+    margin: 0 auto;
+}
+
+.idd {
+    font-size: 14px;
+    font-weight: 600;
+    display: table;
+    margin: 0 auto;
+}
+
+.idd1 {
+    font-size: 12px;
+    display: table;
+    margin: 0 auto;
+}
+
+.number {
+    font-size: 22px;
+    display: table;
+    margin: 0 auto;
+    font-weight: bold
+}
+
+.follow {
+    font-size: 12px;
+    font-weight: 500;
+    display: table;
+    margin: 0 auto;
+    color: #444444
+}
+
+.btn1 {
+    height: 40px;
+    width: 150px;
+    border: none;
+    display: table;
+    margin: 0 auto;
+    background-color: #000;
+    color: #aeaeae;
+    font-size: 15px
+}
+
+.text span {
+    font-size: 13px;
+    color: #545454;
+    display: table;
+    margin: 0 auto;
+    font-weight: 500
+}
+
+.icons i {
+    font-size: 19px
+}
+
+hr .new1 {
+    border: 1px solid
+}
+
+.join {
+    font-size: 14px;
+    color: #a0a0a0;
+    font-weight: bold
+}
+
+.date {
+    background-color: #ccc
+}
+
+.progress.mb-4
+{
+    width: 100%;
+}

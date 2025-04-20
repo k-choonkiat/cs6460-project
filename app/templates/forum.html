@@ -1,0 +1,112 @@
+{% extends "community_layout.html" %}
+{% block title %}
+Rewards
+{% endblock %}
+{% block content %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Forums</title>
+    <script>
+    </script>
+  </head>
+  <body>
+    <div class ="container p-0 rounded-2">
+        <div class="container bg-light p-2 rounded-2">
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="post" class="form-label"><strong>CREATE TOPIC : </strong></label>
+                    <input type="text" name="forum_post_topic" class="form-control" id="post_topic" rows=""2/>
+                    <label for="post" class="form-label"><strong>CREATE POST : </strong></label>
+                    <input type="text" name="forum_post" class="form-control" id="post" rows=""3/>
+                </div>
+                <button type="submit" class="btn btn-sm btn-primary"><strong>POST</strong></form></div></button>
+            </form>
+        </div>
+        <div class ="container p-0 rounded-2">
+            {% for post in posts %}
+            <div class="post">
+                <div class="cards mb-3 rounded-3 " style="background-color: #d7e4ec">
+                    <div class="card-header bg-transparent fw-bold border-thick" text-start>{{post['topic']}}</div>
+                    <div class="card-footer bg-transparent">Post : {{post['post']}}</div>
+                <!-- <div class="card-footer bg-transparent">User : {{post['first_name']}}</div> -->
+                <div class="d-flex flex-column align-items-center">
+                  <button class="btn btn-outline-success mb-1" onclick="vote( '{{post.id}}' ,1)">
+                    <i class="bi bi-hand-thumbs-up"></i>
+                  </button>
+                  <span id="vote-count-{{post['id']}}">{{post['votes']}}</span>
+                  <button class="btn btn-outline-danger mt-1" onclick="vote( '{{post.id}}' , -1)">
+                    <i class="bi bi-hand-thumbs-down"></i>
+                  </button>
+                </div>
+
+                {% if post.replies %}
+                    <ul class="list-group">
+                        {% for reply in post.replies %}
+                        <li class="list-group-item">
+                            <strong>John</strong>: {{ reply.reply }}
+                            <div class="d-flex flex-column align-items-center">
+                                <button class="btn btn-outline-success mb-1" onclick="vote( '{{reply.id}}' ,1)">
+                                  <i class="bi bi-hand-thumbs-up"></i>
+                                </button>
+                                <span id="vote-count-{{reply['id']}}">{{reply['votes']}}</span>
+                                <button class="btn btn-outline-danger mt-1" onclick="vote( '{{reply.id}}' , -1)">
+                                  <i class="bi bi-hand-thumbs-down"></i>
+                                </button>
+                              </div>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% else %}
+                      <p class="text-muted">No replies yet.</p>
+                    {% endif %}
+                <!-- {% if post_id %}
+                <h5>Replies for Post ID: {{ post_id }}</h5>
+                    {% if replies %}
+                        <ul class="list-group mt-3">
+                            {% for reply in replies %}
+
+                            <div class="cards mb-3 rounded-3 " style="background-color: #d7e4ec">
+                                <div class="card-header bg-transparent" text-start>{{reply['reply']}}</div>
+                            <div class="card-footer bg-transparent">User : {{reply['first_name']}}</div>
+                            <div class="d-flex flex-column align-items-center">
+                              <button class="btn btn-outline-success mb-1" onclick="vote( '{{reply.id}}' ,1)">
+                                <i class="bi bi-hand-thumbs-up"></i>
+                              </button>
+                              <span id="vote-count-{{reply['id']}}">{{reply['votes']}}</span>
+                              <button class="btn btn-outline-danger mt-1" onclick="vote( '{{reply.id}}' , -1)">
+                                <i class="bi bi-hand-thumbs-down"></i>
+                              </button>
+                            </div>
+                            </div>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="text-muted">No replies found.</p>
+                    {% endif %}
+                {% endif %} -->
+                <br><br>
+                <div class="card-footer bg-transparent">Post a reply to the above post</div>
+                <form action="/submit_reply" method="POST">
+                    <input type="hidden" name="post_id" value="{{ post['id'] }}">
+                    <input type="hidden" name="student_id" value="1">
+                    <textarea name="reply" placeholder="Write your reply here..." rows="3" style="width: 100%;"></textarea>
+                    <button type="submit" class="btn btn-primary w-100">Submit Reply</button>
+                </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  </body>
+
+{% endblock %}

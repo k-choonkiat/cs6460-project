@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='site.css')}}" />
+    </head>
+
+    <body>
+        <div class="navbar">
+            <a href="{{ url_for('profile') }}" class="navbar-item">profile</a>
+            <a href="{{ url_for('search') }}" class="navbar-item">search</a>
+            <a href="{{ url_for('reward') }}" class="navbar-item">rewards</a>
+            <a href="{{ url_for('forum') }}" class="navbar-item">community</a>
+        </div>
+        <div class ="container p-0 rounded-2">
+        <div class="comm-navbar">
+            <a href="{{ url_for('forum') }}" class="navbar-item">Forum</a>
+            <a href="{{ url_for('events') }}" class="navbar-item">Events</a>
+            <a href="{{ url_for('review') }}" class="navbar-item">Review</a>
+        </div>
+        <div class="body-content">
+            {% block content %}
+            {% endblock %}
+            <hr/>
+            <footer>
+            </footer>
+        </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+</html>
