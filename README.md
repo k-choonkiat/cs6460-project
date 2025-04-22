@@ -1,5 +1,5 @@
 ## Readbit
-Readbit is an application that aims to encourage reading 
+Readbit is an application that aims to encourage reading habits for students and young people. We do so through a mix of habit formation, reward and forming communities.
 
 ### Where is project hosted at
 Project is hoted at https://ckang86.pythonanywhere.com/
