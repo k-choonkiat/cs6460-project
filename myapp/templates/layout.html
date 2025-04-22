@@ -9,6 +9,7 @@
     <body>
         <div class="navbar">
             <a href="{{ url_for('profile') }}" class="navbar-item">profile</a>
+            <a href="{{ url_for('read_pdf', filename='norwegian_wood.pdf') }}" class="navbar-item">reader</a>
             <a href="{{ url_for('search') }}" class="navbar-item">search</a>
             <a href="{{ url_for('reward') }}" class="navbar-item">rewards</a>
             <a href="{{ url_for('forum') }}" class="navbar-item">community</a>

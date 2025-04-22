@@ -8,7 +8,6 @@ import os
 def get_db_connection():
     base_dir = os.path.abspath(os.path.dirname(__file__))
     db_path = os.path.join(base_dir, 'database', 'reading_app.db')
-    print(db_path)
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     return conn
@@ -25,7 +24,7 @@ def search():
         cursor = conn.execute('SELECT * from books WHERE title lIKE ?', ['%' + query +'%'])
         books = cursor.fetchall()
     else:
-        books = conn.execute('SELECT * from books LIMIT 30').fetchall()
+        books = conn.execute('SELECT * from books where id <> 1 LIMIT 30 ').fetchall()
     # print(query)
     conn.close()
     return render_template("search.html", books = books)
@@ -185,8 +184,8 @@ def redeem_reward(reward_id):
 def read_pdf(filename):
     if not filename.endswith('.pdf'):
         return "Unsupported file type", 400
-
-    filepath = os.path.join('static', 'files', filename)
+    base_dir = os.path.abspath(os.path.dirname(__file__))
+    filepath = os.path.join(base_dir, 'static', 'files', filename)
     if not os.path.exists(filepath):
         return "File not found", 404
 
